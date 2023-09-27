@@ -1,0 +1,20 @@
+.selected {
+  background: aqua;
+}
+
+.incorrect {
+  background: rgb(255, 52, 52);
+}
+
+button {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background: white;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.7;
+}
