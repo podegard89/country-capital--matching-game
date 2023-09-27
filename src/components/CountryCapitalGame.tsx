@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styles from "./CountryCapitalGame.module.css";
 
-// each key is a country and the value is a capital
-
 interface CountryCapitalGameProps {
+  // each key is a country and the value is a capital
   data: Record<string, string>;
 }
 
@@ -13,9 +12,8 @@ type Option = {
 };
 
 export default function CountryCapitalGame({ data }: CountryCapitalGameProps) {
-  const countryCapitalArray = objectToRandomArray(data);
   const [options, setOptions] = useState<Option[]>(
-    countryCapitalArray.map((item) => ({ value: item, state: "default" }))
+    objectToRandomArray(data).map((item) => ({ value: item, state: "default" }))
   );
 
   const [selected, setSelected] = useState<string>();
@@ -24,9 +22,10 @@ export default function CountryCapitalGame({ data }: CountryCapitalGameProps) {
     if (!selected) {
       setOptions(
         options.map((item) => {
-          return item.value === opt.value
-            ? { ...item, state: "selected" }
-            : { ...item, state: "default" };
+          return {
+            ...item,
+            state: item.value === opt.value ? "selected" : "default",
+          };
         })
       );
       setSelected(opt.value);
